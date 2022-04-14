@@ -22,7 +22,7 @@ sheet_name = 'Data'
 data_range = 'A:I'
 meta_data_range = 'K:L'
 meta_data_count = 8
-y_axis_options = ['Annual Operating Hours', 'Annual Heating Consumption']
+y_axis_options = ['Annual Operating Hours', 'Annual Load within Percent Load Bin']
 x_axis_options = ['MBH', 'Btuh/sf']
 mbh_flag = False
 
@@ -416,7 +416,7 @@ def plot_load_profile(load_df, meta_df):
     # <editor-fold desc="Configure x-axis">
     # Set x-axis title
     fig.update_xaxes(
-        title_text='<b>Part load operating point</b><br>(% design capacity, ' + str(mbh_design) + ' MBH)',
+        title_text='<b>Percent of Design Load</b><br>(Design Capacity, ' + str(mbh_design) + ' MBH)',
         showline=True,
         linewidth=2,
         linecolor='black',
