@@ -247,8 +247,8 @@ def plot_load_profile(load_df, meta_df):
         customdata = np.stack([decimal_labels, increment_labels]).transpose()
         y1_title_text = "<b>Annual Load within Percent Load Bin</b>"
         y2_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(round(total_load)) + " kBtus)"
-        hovertemplate1 = '<b>%{y:,}% of total heating output</b> <extra>@ %{customdata[0]} design capacity</extra>'
-        hovertemplate2 = '<b>%{y:.2f}% of total heating output</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
+        hovertemplate1 = '<b>%{y:,}% of total annual load</b> <extra>@ %{customdata[0]} design capacity</extra>'
+        hovertemplate2 = '<b>%{y:.2f}% of total annual load</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
         color = '#00C496'
     # </editor-fold>
 
