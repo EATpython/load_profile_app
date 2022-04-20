@@ -32,7 +32,7 @@ mbh_flag = False
 
 # helper function for displaying text input cleanly
 def text_field(label, columns=None, **input_params):
-    c1, c2 = st.beta_columns(columns or [1, 4])
+    c1, c2 = st.beta_columns(columns or [1, 6])
 
     # Display field name with some alignment
     c1.markdown("##")
