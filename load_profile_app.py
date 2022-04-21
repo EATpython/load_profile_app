@@ -407,7 +407,7 @@ def plot_load_profile(load_df, meta_df):
         secondary_y=True,
         showgrid=False,
         range=[0, 105],
-        nticks=2,
+        nticks=11,
         ticksuffix='%',
         row=1
     )
