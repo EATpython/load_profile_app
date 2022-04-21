@@ -297,7 +297,7 @@ def plot_load_profile(load_df, meta_df):
     fig.add_trace(
         go.Bar(
             x=labels,
-            y=y1,
+            y=y2,
             marker=dict(color=color),
             customdata=customdata,
             hovertemplate=hovertemplate1
@@ -312,7 +312,7 @@ def plot_load_profile(load_df, meta_df):
     fig.add_trace(
         go.Scatter(
             x=labels,
-            y=y2,
+            y=y1,
             mode='lines+markers',
             marker=dict(
                 color="#FB9A2D",
