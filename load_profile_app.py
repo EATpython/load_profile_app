@@ -233,20 +233,20 @@ def plot_load_profile(load_df, meta_df):
     # <editor-fold desc="Set y-axis variables based on y-axis units">
     # Set y-axis variables based on y-axis units
     if y_axis_units == 'Annual Operating Hours':
-        y1 = [x / sum(counts) * 100 for x in counts]
-        y2 = [x / total_op_hrs * 100 for x in cumulative_hours]
+        y2 = [x / sum(counts) * 100 for x in counts]
+        y1 = [x / total_op_hrs * 100 for x in cumulative_hours]
         customdata = np.stack([decimal_labels, increment_labels]).transpose()
-        y1_title_text = "<b>Annual Operating Hours 2</b>"
-        y2_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(int(sum(counts) * td_in_hrs)) + " hours)"
+        y2_title_text = "<b>Annual Operating Hours 2</b>"
+        y1_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(int(sum(counts) * td_in_hrs)) + " hours)"
         hovertemplate1 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ %{customdata[0]} design capacity</extra>'
         hovertemplate2 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
         color = '#3B6D89'
     elif y_axis_units == 'Annual Load within Percent Load Bin':
-        y1 = [round(x / total_load * 100, 2) for x in binned_loads]
-        y2 = cumulative_percent
+        y2 = [round(x / total_load * 100, 2) for x in binned_loads]
+        y1 = cumulative_percent
         customdata = np.stack([decimal_labels, increment_labels]).transpose()
-        y1_title_text = "<b>Annual Load within Percent Load Bin</b>"
-        y2_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(round(total_load)) + " kBtus)"
+        y2_title_text = "<b>Annual Load within Percent Load Bin</b>"
+        y1_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(round(total_load)) + " kBtus)"
         hovertemplate1 = '<b>%{y:,}% of total annual load</b> <extra>@ %{customdata[0]} design capacity</extra>'
         hovertemplate2 = '<b>%{y:.2f}% of total annual load</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
         color = '#00C496'
@@ -293,26 +293,26 @@ def plot_load_profile(load_df, meta_df):
     )
     # </editor-fold>
 
-    # <editor-fold desc="Add the bar chart on the primary axis">
+    # <editor-fold desc="Add the bar chart on the secondary axis">
     fig.add_trace(
         go.Bar(
             x=labels,
-            y=y1,
+            y=y2,
             marker=dict(color=color),
             customdata=customdata,
             hovertemplate=hovertemplate1
         ),
-        secondary_y=False,
+        secondary_y=True,
         row=1,
         col=1
     )
     # </editor-fold>
 
-    # <editor-fold desc="Add the cumulative percent line on the secondary axis">
+    # <editor-fold desc="Add the cumulative percent line on the primary axis">
     fig.add_trace(
         go.Scatter(
             x=labels,
-            y=y2,
+            y=y1,
             mode='lines+markers',
             marker=dict(
                 color="#FB9A2D",
@@ -320,7 +320,7 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate2
         ),
-        secondary_y=True,
+        secondary_y=False,
         row=1,
         col=1
     )
