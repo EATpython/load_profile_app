@@ -236,7 +236,7 @@ def plot_load_profile(load_df, meta_df):
         y2 = [x / sum(counts) * 100 for x in counts]
         y1 = [x / total_op_hrs * 100 for x in cumulative_hours]
         customdata = np.stack([decimal_labels, increment_labels]).transpose()
-        y2_title_text = "<b>Annual Operating Hours</b>"
+        y2_title_text = "<b>Annual Operating Hours 2</b>"
         y1_title_text = "<b>Cumulative</b><br>(100% = {:,}".format(int(sum(counts) * td_in_hrs)) + " hours)"
         hovertemplate1 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ %{customdata[0]} design capacity</extra>'
         hovertemplate2 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
@@ -293,7 +293,7 @@ def plot_load_profile(load_df, meta_df):
     )
     # </editor-fold>
 
-    # <editor-fold desc="Add the bar chart on the primary axis">
+    # <editor-fold desc="Add the bar chart on the secondary axis">
     fig.add_trace(
         go.Bar(
             x=labels,
@@ -302,13 +302,13 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate1
         ),
-        secondary_y=False,
+        secondary_y=True,
         row=1,
         col=1
     )
     # </editor-fold>
 
-    # <editor-fold desc="Add the cumulative percent line on the secondary axis">
+    # <editor-fold desc="Add the cumulative percent line on the primary axis">
     fig.add_trace(
         go.Scatter(
             x=labels,
@@ -320,7 +320,7 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate2
         ),
-        secondary_y=True,
+        secondary_y=False,
         row=1,
         col=1
     )
