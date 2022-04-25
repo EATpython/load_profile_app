@@ -305,7 +305,7 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate2
         ),
-        secondary_y=True,
+        secondary_y=False,
         row=1,
         col=1
     )
@@ -320,7 +320,7 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate1
         ),
-        secondary_y=False,
+        secondary_y=True,
         row=1,
         col=1
     )
