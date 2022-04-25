@@ -389,12 +389,12 @@ def plot_load_profile(load_df, meta_df):
     # set y1-axis title
     fig.update_yaxes(
         title_text=y1_title_text,
-        color="#FB9A2D",
+        color=color,
         showline=True,
         linewidth=2,
         linecolor='black',
         secondary_y=False,
-        nticks=11,
+        nticks=4,
         ticksuffix='%',
         row=1
     )
@@ -404,14 +404,14 @@ def plot_load_profile(load_df, meta_df):
     # set y2-axis title
     fig.update_yaxes(
         title_text=y2_title_text,
-        color=color,
+        color="#FB9A2D",
         showline=True,
         linewidth=2,
         linecolor='black',
         secondary_y=True,
         showgrid=False,
         range=[0, 105],
-        nticks=4,
+        nticks=11,
         ticksuffix='%',
         row=1
     )
