@@ -305,7 +305,7 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate2
         ),
-        secondary_y=False,
+        secondary_y=True,
         row=1,
         col=1
     )
@@ -320,11 +320,15 @@ def plot_load_profile(load_df, meta_df):
             customdata=customdata,
             hovertemplate=hovertemplate1
         ),
-        secondary_y=True,
+        secondary_y=False,
         row=1,
         col=1
     )
     # </editor-fold>
+    
+    # update layout to put axes and values in the desired positions
+    fig.update_layout(dict(yaxis2={'anchor': 'x', 'overlaying': 'y', 'side': 'left'},
+                  yaxis={'anchor': 'x', 'domain': [0.0, 1.0], 'side':'right'}))
 
     # <editor-fold desc="Add asterisks on 'Design MBH' & 'Design Btu/sf' to indicate that these are assumptions">
     # TODO: Clean this up
