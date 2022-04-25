@@ -22,7 +22,7 @@ sheet_name = 'Data'
 data_range = 'A:I'
 meta_data_range = 'K:L'
 meta_data_count = 8
-y_axis_options = ['Annual Operating Hours', 'Annual Load within Percent Load Bin']
+y_axis_options = ['Annual Operating Hours', 'Annual Therms within Percent Load Bin']
 x_axis_options = ['MBH', 'Btuh/sf']
 mbh_flag = False
 
@@ -241,7 +241,7 @@ def plot_load_profile(load_df, meta_df):
         hovertemplate1 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ %{customdata[0]} design capacity</extra>'
         hovertemplate2 = '<b>%{y:.2f}% of total operating hours</b> <extra>@ ≤%{customdata[0]} design capacity</extra>'
         color = '#3B6D89'
-    elif y_axis_units == 'Annual Load within Percent Load Bin':
+    elif y_axis_units == 'Annual Therms within Percent Load Bin':
         y1 = [round(x / total_load * 100, 2) for x in binned_loads]
         y2 = cumulative_percent
         customdata = np.stack([decimal_labels, increment_labels]).transpose()
